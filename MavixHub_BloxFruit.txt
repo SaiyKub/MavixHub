@@ -1,3 +1,4 @@
+
 if game.PlaceId == 2753915549 then
    World1 = true
 elseif game.PlaceId == 4442272183 then
@@ -2441,24 +2442,24 @@ LoadScrollbar.MouseButton1Click:Connect(function()
 end)
 
 local Window = Fluent:CreateWindow({
-    Title = "MavixHub " .. Fluent.Version,
+    Title = "MavixHub ",
     SubTitle = "discord.gg/JDSs3KMw",
     TabWidth = 100,
-    Size = UDim2.fromOffset(420, 320),
+    Size = UDim2.fromOffset(400, 300),
     Acrylic = false,
-    Theme = "Light",
+    Theme = "Dark",
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
+
 local Tabs = {
-    Main = Window:AddTab({ Title = "General", Icon = "rbxassetid://15712703260" }),
-    Sg = Window:AddTab({ Title = "Settings", Icon = "settings" }),
-    IQ = Window:AddTab({ Title = "Items & Quest", Icon = "swords" }),
-    Stats = Window:AddTab({ Title = "Status Tab", Icon = "chevrons-up" }),
-    TP = Window:AddTab({ Title = "Island", Icon = "rbxassetid://15712738876" }),
-    ESP = Window:AddTab({ Title = "ESP", Icon = "eye" }),   
-    Shop = Window:AddTab({ Title = "Shop", Icon = "rbxassetid://15712767144" }), 
-    Misc = Window:AddTab({ Title = "Misc", Icon = "rbxassetid://15712771666" }),
+    Main = Window:AddTab({ Title = "ทั่วไป", Icon = "rbxassetid://15712703260" }),
+    IQ = Window:AddTab({ Title = "ไอเทม & ภารกิจ", Icon = "swords" }),
+    Ea = Window:AddTab({ Title = "เผ่า v4", Icon = "chevrons-up" }),
+    Shop = Window:AddTab({ Title = "ร้านค้า", Icon = "rbxassetid://15712767144" }), 
+    TP = Window:AddTab({ Title = "เกาะ", Icon = "rbxassetid://15712738876" }),
+    ESP = Window:AddTab({ Title = "มอง", Icon = "eye" }),   
+    Sg = Window:AddTab({ Title = "การตั้งค่า", Icon = "settings" }),
 }
 
 local Options = Fluent.Options
@@ -2468,11 +2469,11 @@ end
 
 PosY = "35"
 
-local Main = Tabs.Main:AddSection("เมนูหลัก")
+local Main = Tabs.Main:AddSection("ฟาร์มม")
 
 local Toggle = Tabs.Main:AddToggle("Auto Farm Level 1-2550 Max", {
     Title = "ออโต้ฟาร์ม เลเวล", 
-    Description = "",
+    Description = "ฟาร์มเลเวล 1 ถึง 2600",
     Default = false,
     Callback = function(Value)
         _G.AutoFarmLevel = Value
@@ -3696,14 +3697,25 @@ Module.FastAttack = (function()
     return AttackModule
 end)()
 
-local Toggle = Tabs.Sg:AddToggle("Haki", {
-    Title = "ออโต้เปิดฮาคิ", 
-    Description = "Auto Haki", 
-    Default = true,
-    Callback = function(Value)
-        _G.AUTOHAKI = Value
+local Toggle = Tabs.Sg:AddToggle("Delete Effect", {
+    Title = "Delete Effect", 
+    Description = "",
+    Default = false,
+    Callback = function()
+        
     end
 })
+if game:IsLoaded() then
+    pcall(function()
+        repeat wait()
+            game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
+            game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
+        until not game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") or not game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn")
+    end)
+end
+
+
+_G.AUTOHAKI = true
 spawn(function()
 	while task.wait() do
 		if _G.AUTOHAKI then 
@@ -3716,173 +3728,8 @@ spawn(function()
 		end
 	end
 end)
-local Toggle = Tabs.Sg:AddToggle("Auto Hide Notification", {
-    Title = "ปิดการแจ้งเตือน",
-    Description = "Disable Notifications", 
-    Default = true,
-    Callback = function(Value)
-        _G.HideNotificationExp = Value
-    end
-})
-spawn(function()
-	while task.wait() do
-	   pcall(function()
-		if _G.HideNotificationExp then
-			game.Players.LocalPlayer.PlayerGui.Notifications.Enabled = false
-		else
-			game.Players.LocalPlayer.PlayerGui.Notifications.Enabled = true
-			end
-		end)
-	end
-end)
-local Toggle = Tabs.Sg:AddToggle("Auto Codes", {
-    Title = "สุ่มโค้ค Exp2", 
-    Description = "Redeem Codes", 
-    Default = true,
-    Callback = function(Value)
-        _G.AutoRedeemCode = Value
-    end
-})    
-spawn(function()
-	while task.wait() do
-		if _G.AutoRedeemCode then
-	function UseCode(Text)
-				game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(Text)
-			end
-        UseCode("Enyo_is_Pro")
-        UseCode("Magicbus")
-        UseCode("JCWK")
-        UseCode("Starcodeheo")
-        UseCode("Bluxxy")
-        UseCode("fudd10_v2")
-        UseCode("3BVISITS")
-        UseCode("UPD16")
-        UseCode("FUDD10")
-        UseCode("BIGNEWS")
-        UseCode("Sub2OfficialNoobie")
-        UseCode("SUB2GAMERROBOT_EXP1")
-        UseCode("StrawHatMaine")
-        UseCode("SUB2NOOBMASTER123")
-        UseCode("Sub2Daigrock")
-        UseCode("Axiore")
-        UseCode("TantaiGaming")
-        UseCode("STRAWHATMAINE")
-        UseCode("kittgaming")
-        UseCode("Magicbus")
-        UseCode("JCWK")
-        UseCode("Starcodeheo")
-        UseCode("Bluxxy")
-        UseCode("fudd10_v2")
-        UseCode("Enyu_is_Pro")
-        UseCode("Sub2Fer999")
-        UseCode("THEGREATACE")
-        UseCode("SUB2GAMERROBOT_EXP1")
-        UseCode("Sub2OfficialNoobie")
-        UseCode("StrawHatMaine")
-        UseCode("SUB2NOOBMASTER123")
-        UseCode("Sub2Daigrock")
-        UseCode("Axiore")
-        UseCode("TantaiGaming")
-        UseCode("STRAWHATMAINE")
-        UseCode("JCWK")
-        UseCode("Sub2Fer999")
-        UseCode("Magicbus")
-        UseCode("Starcodeheo")
-        UseCode("Bluxxy")
-        UseCode("Sub2Fer999")
-        UseCode("GAMERROBOT_YT")
-            end
-        end
-    end)
-Tabs.Sg:AddButton({
-    Title = "ภาพกากสำหรับมือถือแล็ค",
-    Description = "FPS Booster",
-    Callback = function()
-        FPSBooster()
-    end
-})
-function FPSBooster()
-        local decalsyeeted = true
-        local g = game
-        local w = g.Workspace
-        local l = g.Lighting
-        local t = w.Terrain
-        sethiddenproperty(l, "Technology", 2)
-        sethiddenproperty(t, "Decoration", false)
-        t.WaterWaveSize = 0
-        t.WaterWaveSpeed = 0
-        t.WaterReflectance = 0
-        t.WaterTransparency = 0
-        l.GlobalShadows = false
-        l.FogEnd = 9e9
-        l.Brightness = 0
-        settings().Rendering.QualityLevel = "Level01"
-        for i, v in pairs(g:GetDescendants()) do
-            if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
-                v.Material = "Plastic"
-                v.Reflectance = 0
-            elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
-                v.Transparency = 1
-            elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-                v.Lifetime = NumberRange.new(0)
-            elseif v:IsA("Explosion") then
-                v.BlastPressure = 1
-                v.BlastRadius = 1
-            elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-                v.Enabled = false
-            elseif v:IsA("MeshPart") then
-                v.Material = "Plastic"
-                v.Reflectance = 0
-                v.TextureID = 10385902758728957
-            end
-        end
-        for i, e in pairs(l:GetChildren()) do
-            if
-                e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or
-                    e:IsA("DepthOfFieldEffect")
-             then
-                e.Enabled = false
-            end
-        end
-    end
-local Toggle = Tabs.Sg:AddToggle("Black Screen", {
-    Title = "หน้าจอสีดำ",
-    Description = "Black Screen", 
-    Default = _G.BlackScreen,
-    Callback = function(Value)
-        _G.BlackScreen = Value
-    end
-})
-spawn(function()
-    while task.wait() do
-        if _G.BlackScreen then
-                game:GetService("Players").LocalPlayer.PlayerGui.Main.Blackscreen.Size = UDim2.new(500, 0, 500, 500)
-        else
-                game:GetService("Players").LocalPlayer.PlayerGui.Main.Blackscreen.Size = UDim2.new(1, 0, 500, 500)
-        end
-    end
-end)
-local Toggle = Tabs.Sg:AddToggle("White Screen", {
-    Title = "หน้าจอสีขาว",
-    Description = "White Screen", 
-    Default = _G.WhiteScreen,
-    Callback = function(Value)
-        _G.WhiteScreen = Value
-    end
-})
-spawn(function()
-   while task.wait() do
-      if _G.WhiteScreen then
-         pcall(function()
-            game:GetService("RunService"):Set3dRenderingEnabled(false)
-         end)
-      else
-         pcall(function()
-            game:GetService("RunService"):Set3dRenderingEnabled(true)
-         end)
-      end
-   end
-end)
+
+
 
 local Main = Tabs.IQ:AddSection("เมนูทำดาบ")
 local Toggle = Tabs.IQ:AddToggle("Auto Swords", {
@@ -5365,81 +5212,197 @@ spawn(function()
 end)
 
 
-local Main = Tabs.Stats:AddSection("สถานะ & สเตตัส")
-local PointStatus = Tabs.Stats:AddParagraph({
-    Title = "You're now having : Not Points"
+local Toggle = Tabs.Ea:AddToggle("Race Door", {
+    Title = "Race Door", 
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+        RaceDoors = Value
+    CancelTween(RaceDoors)
+    end
 })
 spawn(function()
-    while task.wait() do
-        pcall(function()
-            PointStatus:SetTitle("You're now having "..tostring(game:GetService("Players")["LocalPlayer"].Data.Points.Value).. " Points")
-        end)
+    while task.wait(.1) do
+        if RaceDoors then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(28286.35546875, 14895.3017578125, 102.62469482421875))
+            wait(.5)
+            if game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
+                TP2(CFrame.new(29221.822265625, 14890.9755859375, -205.99114990234375))
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
+                TP2(CFrame.new(28960.158203125, 14919.6240234375, 235.03948974609375))
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
+                TP2(CFrame.new(28231.17578125, 14890.9755859375, -211.64173889160156))
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
+                TP2(CFrame.new(28502.681640625, 14895.9755859375, -423.7279357910156))
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" then
+                TP2(CFrame.new(28674.244140625, 14890.6767578125, 445.4310607910156))
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
+                TP2(CFrame.new(29012.341796875, 14890.9755859375, -380.1492614746094))
+            end
+        end
     end
 end)
-local Status = Tabs.Stats:AddParagraph({
-    Title = "Status : not"
-})
-spawn(function()
-  while task.wait() do
-    pcall(function()
-      Status:SetTitle("หมัด: "..game.Players.LocalPlayer.Data.Stats.Melee.Level.Value.. " เลือด: "..game.Players.LocalPlayer.Data.Stats.Defense.Level.Value.. " ดาบ: "..game.Players.LocalPlayer.Data.Stats.Sword.Level.Value.. " ปืน: "..game.Players.LocalPlayer.Data.Stats.Gun.Level.Value.. " ผลปีศาจ: "..game.Players.LocalPlayer.Data.Stats["Demon Fruit"].Level.Value)
-    end)
-  end
-end)
-local Toggle = Tabs.Stats:AddToggle("Auto Up Stats", {
-    Title = "Melee",
-    Default = true,
-    Callback = function(Value)
-        _G.Melee = Value
-    end
-})
-local Toggle = Tabs.Stats:AddToggle("Auto Up Stats", {
-    Title = "Defense",
-    Default = false,
-    Callback = function(Value)
-        _G.Defense = Value
-    end
-})    
-local Toggle = Tabs.Stats:AddToggle("Auto Up Stats", {
-    Title = "Sword", 
-    Default = false,
-    Callback = function(Value)
-        _G.Sword = Value
-    end
-})    
-local Toggle = Tabs.Stats:AddToggle("Auto Up Stats", {
-    Title = "Gun", 
-    Default = false,
-    Callback = function(Value)
-        _G.Gun = Value
-    end
-})    
-local Toggle = Tabs.Stats:AddToggle("Auto Up Stats", {
-    Title = "Demon Fruit", 
-    Default = false,
-    Callback = function(Value)
-        _G.DemonFruit = Value
-    end
-})    
 
+local Toggle = Tabs.Ea:AddToggle("Auto Trial", {
+    Title = "Auto Trial", 
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+        AutoCompleteRace = Value
+    end
+})
 spawn(function()
     while task.wait() do
-        pcall(function()
-            local a = _G.Melee
-            local b = _G.Defense
-            local c = _G.Sword
-            local d = _G.Gun
-            local e = _G.DemonFruit           
-            local f = {a, b, c, d, e}
-            local g = {"Melee", "Defense", "Sword", "Gun", "Demon Fruit"}            
-            for h = 1, #f do
-                if f[h] then
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint", g[h], 1)
+        if AutoCompleteRace then
+            if game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
+                pcall(function()
+                    for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
+                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                            if v.Name then
+                                repeat game:GetService("RunService").Heartbeat:wait()
+                                    v.Humanoid.Health = 0
+                                    v.HumanoidRootPart.CanCollide = false
+                                    sethiddenproperty(game:GetService('Players').LocalPlayer,"SimulationRadius",math.huge)
+                                until not AutoCompleteRace or not v.Parent or not game.Workspace.Enemies:FindFirstChild(v.Name)
+                            end
+                        end
+                    end
+                end)
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
+                for i,v in pairs(game:GetService("Workspace").Map.SkyTrial.Model:GetDescendants()) do
+                    if v.Name ==  "snowisland_Cylinder.081" then
+                        TP2(v.CFrame * CFrame.new(0,0,0))
+                    end
+                end
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
+                for i,v in pairs(game:GetService("Workspace").SeaBeasts.SeaBeast1:GetDescendants()) do
+                    if v.Name ==  "HumanoidRootPart" then
+                        TP2(v.CFrame * CFrame.new(20,450,0))
+                        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                            if v:IsA("Tool") then
+                                if v.ToolTip == "Melee" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
+                                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                                end
+                            end
+                        end
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(false,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        wait(.2)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(false,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        wait(.2)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                            if v:IsA("Tool") then
+                                if v.ToolTip == "Blox Fruit" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
+                                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                                end
+                            end
+                        end
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(false,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        wait(.2)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(false,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        wait(.2)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                
+                        wait(0.5)
+                        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                            if v:IsA("Tool") then
+                                if v.ToolTip == "Sword" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
+                                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                                end
+                            end
+                        end
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(false,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        wait(.2)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(false,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        wait(.2)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        wait(0.5)
+                        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                            if v:IsA("Tool") then
+                                if v.ToolTip == "Gun" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
+                                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                                end
+                            end
+                        end
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(false,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        wait(.2)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(false,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        wait(.2)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                    end
+                end
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
+                TP2(CFrame.new(28654, 14898.7832, -30, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" then
+                pcall(function()
+                    for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
+                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                            if v.Name then
+                                repeat game:GetService("RunService").Heartbeat:wait()
+                                    v.Humanoid.Health = 0
+                                    v.HumanoidRootPart.CanCollide = false
+                                    sethiddenproperty(game:GetService('Players').LocalPlayer,"SimulationRadius",math.huge)
+                                until not AutoCompleteRace or not v.Parent or not game.Workspace.Enemies:FindFirstChild(v.Name)
+                            end
+                        end
+                    end
+                end)
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
+                for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+                    if v.Name == "StartPoint" then
+                        TP2(v.CFrame* CFrame.new(0,10,0))
+                    end
                 end
             end
-        end)
+        end
     end
 end)
+
+local Ea = Tabs.Ea:AddSection("Timple of Time")
+Tabs.Ea:AddButton({
+    Title = "Timple of Time",
+    Description = "",
+    Callback = function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(28286.35546875, 14895.3017578125, 102.62469482421875))
+    wait(1)
+    TP2(CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875))
+    end
+})
+
+local Ea = Tabs.Ea:AddSection("Lever Pull")
+Tabs.Ea:AddButton({
+    Title = "Lever Pull",
+    Description = "",
+    Callback = function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(28575.181640625, 14936.6279296875, 72.31636810302734))
+    wait(1)
+    TP2(CFrame.new(28575.181640625, 14936.6279296875, 72.31636810302734))
+    end
+})
+
+local Ea = Tabs.Ea:AddSection("Ancient One")
+Tabs.Ea:AddButton({
+    Title = "Ancient One",
+    Description = "",
+    Callback = function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(28981.552734375, 14888.4267578125, -120.245849609375))
+    wait(1)
+    TP2(CFrame.new(28981.552734375, 14888.4267578125, -120.245849609375))
+    end
+})
+
 
 
 
@@ -5969,13 +5932,16 @@ Tabs.Shop:AddButton({
     end
 })
 
-local Main = Tabs.Misc:AddSection("Join Server")
 
--- ปุ่มย้ายเชิร์ฟ
-Tabs.Misc:AddButton({
-    Title = "ย้ายเชิร์ฟ",
-    Description = "Join Server ",
-    Callback = function()
-        Hop()
-    end
-})
+
+
+
+
+
+
+
+
+
+
+
+
